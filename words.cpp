@@ -3,7 +3,12 @@
 
 const int arSize = 80; 
 
+bool contains(char look, char find[]);
+
 int main() {
+
+	char vowlArr[5] = { 'a', 'e', 'i', 'o', 'u' };
+	char consArr[21] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'v', 'w', 'x', 'y'};
 
 	using namespace std;
 	char line[arSize];
@@ -24,81 +29,36 @@ int main() {
 		i++;
 	}
 
-	
-	
-
-	for (int i = 0; line[i] != 'q' || line[i+1] != '\0'; i++) {
+	for (int i = 0; line[i+1] != '\0'; i++) {
 		if (i == 0 || line[i-1] == ' ') {
-		
-			switch (line[i]) {
-			case 'a': vowel++;
-				break; 
-			case 'b': consonant++;
-				break;
-			case 'c': consonant++;
-				break;
-			case 'd': consonant++;
-				break;
-			case 'e': vowel++;
-				break;
-			case 'f': consonant++;
-				break;
-			case 'g': consonant++;
-				break;
-			case 'h': consonant++;
-				break;
-			case 'i': vowel++;
-				break;
-			case 'j': consonant++;
-				break;
-			case 'k': consonant++;
-				break;
-			case 'l': consonant++;
-				break;
-			case 'm': consonant++;
-				break;
-			case 'n': consonant++;
-				break;
-			case 'o': vowel++;
-				break;
-			case 'p': consonant++;
-				break;
-			case 'q': consonant++;
-				break;
-			case 'r': consonant++;
-				break;
-			case 's': consonant++;
-				break;
-			case 't': consonant++;
-				break;
-			case 'u': vowel++;
-				break;
-			case 'v': consonant++;
-				break;
-			case 'w': consonant++;
-				break;
-			case 'x': consonant++;
-				break;
-			case 'y': consonant++;
-				break;
-			case 'z': consonant++;
-				break;
-			default: other++; 
-				 
-
+			if (contains(line[i], vowlArr)) {
+				vowel++;
 			}
+			else if (contains(line[i], consArr)) {
+				consonant++;
+			}
+			else {
+				other++;
+			}
+			
 		}
 		
-	}
+	} 
 	
 
 	cout << vowel << " words start with a vowel." << endl;
 	cout << consonant << " words start with a consonant." << endl;
 	cout << other << " words start with other." << endl;
-
 	
+}
 
-	
+bool contains(char look, char find[]) {
 
-	
+	for (int i = 0; find[i] != '\0'; i++) {
+		if (find[i] == look) {
+			return true;
+		}
+	}
+
+	return false;
 }
